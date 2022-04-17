@@ -2,15 +2,16 @@ import React from 'react';
 import './Service.css'
 
 const Service = ({ service }) => {
-    const { name, description, img } = service;
+    const { name, description, img, price } = service;
     return (
-        <div class="single-service col-12 col-md-4">
-            <div class="part-1">
+        <div className="single-service col-12 col-md-4">
+            <div className="part-1">
                 <img src={img} className='w-100 rounded mb-3' alt="" />
-                <h3 class="title">{name}</h3>
+                <h3 className="title">{name}</h3>
+                <h2>Cost <span className='fw-bold text-info'>${price}</span></h2>
             </div>
-            <div class="part-2">
-                <p class="description">{description}</p>
+            <div className="part-2">
+                <p className="description">{description}</p>
                 <button className='btn btn-danger'>BUY THIS SERVICE!</button>
             </div>
         </div>

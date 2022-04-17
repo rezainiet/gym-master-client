@@ -11,9 +11,9 @@ const Footer = () => {
             </div>
             <div className='footer-links'>
                 <ul className='custom-border'>
-                    <li><a href="#">About</a></li>
-                    <li><a href="#">Sign Up</a></li>
-                    <li><a href="#">Login</a></li>
+                    <li><a href="/about">About</a></li>
+                    <li><a href="/signup">Sign Up</a></li>
+                    <li><a href="/login">Login</a></li>
                 </ul>
             </div>
         </div>
