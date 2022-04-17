@@ -1,0 +1,17 @@
+.footer-wrapper {
+    background-color: #24252A;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 15px;
+}
+
+ul {
+    display: grid;
+    justify-content: end;
+}
+
+.footer-links ul li {
+    display: block;
+    margin-left: 10px;
+}
