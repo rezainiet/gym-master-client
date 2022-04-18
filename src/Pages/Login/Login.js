@@ -13,6 +13,7 @@ const Login = () => {
     const emailRef = useRef('');
     const passwordRef = useRef('');
     const location = useLocation();
+    let errorMessage;
 
     let from = location.state?.from?.pathname || "/";
 
@@ -23,6 +24,9 @@ const Login = () => {
         error,
     ] = useSignInWithEmailAndPassword(auth);
 
+    if (error) {
+        errorMessage = <div><p className='text-danger'>Wrong e-mail or password!</p></div>
+    }
     if (user) {
         navigate(from, { replace: true });
     }
@@ -39,6 +43,10 @@ const Login = () => {
     }
     const navigateRegister = event => {
         navigate('/register');
+    }
+
+    const handlePasswordReset = () => {
+        toast('Password reset mail sent!!')
     }
     return (
         <div className='bg-dark'>
@@ -60,10 +68,12 @@ const Login = () => {
                                 <Form.Label>Password</Form.Label>
                                 <Form.Control ref={passwordRef} required type="password" placeholder="Password" />
                             </Form.Group>
+                            {errorMessage}
                             <Button variant="primary" onClick={handleToast} type="submit">
                                 Submit
                             </Button>
                             <p className='mt-3'>Don't have any account? <span onClick={navigateRegister} className='text-info cursor-pointer'>Register Now</span ></p>
+                            <p className='mt-3'>Forgot password? <span onClick={handlePasswordReset} className='text-info cursor-pointer'>Reset Now</span ></p>
                         </Form>
                         <ToastContainer />
                         <SocialLogin></SocialLogin>

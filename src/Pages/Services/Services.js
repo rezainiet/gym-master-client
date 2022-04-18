@@ -18,7 +18,7 @@ const Services = () => {
                         <div className="col-md-10 col-lg-8">
                             <div className="header-section">
                                 <h2 className="title">Exclusive <span>Services</span></h2>
-                                <p className="description">There are many variations of passages of Lorem Ipsum available but the majority have suffered alteration in some injected humour</p>
+                                <p className="description">There are many variations of Services that I will give you. <br /> You can try at least one of these.</p>
                             </div>
                         </div>
                     </div>

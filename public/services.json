@@ -3,21 +3,21 @@
         "id": 1,
         "name": "WEIGHT LOSS",
         "price": "300",
-        "description": "Lorem ipsum dolor sit amet, consectetu radipisi cing elitBeatae autem aperiam nequ quaera molestias voluptatibus harum ametipsa.",
+        "description": "I have almost 100+ students and i teach them that how to build up their fitness and body. Try Weight Loss service from 300 dollars",
         "img": "https://i.ibb.co/vC5ntDN/service-1.png"
     },
     {
         "id": 2,
         "name": "EXCERCISE PROGRAMING",
         "price": "100",
-        "description": "Lorem ipsum dolor sit amet, consectetu radipisi cing elitBeatae autem aperiam nequ quaera molestias voluptatibus harum ametipsa.",
+        "description": "I have almost 100+ students and i teach them that how to build up their fitness and body. Try Excercise Programming service from 100 dollars",
         "img": "https://i.ibb.co/d0jX1Tt/service-2.png"
     },
     {
         "id": 3,
         "name": "PERSONAL TRAINING",
-        "price": "150",
-        "description": "Lorem ipsum dolor sit amet, consectetu radipisi cing elitBeatae autem aperiam nequ quaera molestias voluptatibus harum ametipsa.",
+        "price": "0",
+        "description": "I have almost 100+ students and i teach them that how to build up their fitness and body. Try Personal Training service for FREE!",
         "img": "https://i.ibb.co/Wn61Bwg/service-3.png"
     }
 ]
