@@ -5,7 +5,8 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init';
 import SocialLogin from '../../Shared/SocialLogin/SocialLogin';
 import './Login.css';
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Login = () => {
     const navigate = useNavigate();
@@ -33,7 +34,9 @@ const Login = () => {
 
         signInWithEmailAndPassword(email, password);
     }
-
+    const handleToast = () => {
+        toast('Signing In...')
+    }
     const navigateRegister = event => {
         navigate('/register');
     }
@@ -57,11 +60,12 @@ const Login = () => {
                                 <Form.Label>Password</Form.Label>
                                 <Form.Control ref={passwordRef} required type="password" placeholder="Password" />
                             </Form.Group>
-                            <Button variant="primary" type="submit">
+                            <Button variant="primary" onClick={handleToast} type="submit">
                                 Submit
                             </Button>
                             <p className='mt-3'>Don't have any account? <span onClick={navigateRegister} className='text-info cursor-pointer'>Register Now</span ></p>
                         </Form>
+                        <ToastContainer />
                         <SocialLogin></SocialLogin>
                     </div>
                 </div>

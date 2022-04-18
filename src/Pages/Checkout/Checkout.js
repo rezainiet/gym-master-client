@@ -1,9 +1,15 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
 import './Checkout.css'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const handleFormSubmit = event => {
     event.preventDefault();
+}
+
+const handleOrderSubmit = () => {
+    toast('Succesfully Order Submitted!')
 }
 
 const Checkout = () => {
@@ -50,9 +56,10 @@ const Checkout = () => {
                         <input type="text" className="form-control" id="inputZip" />
                     </div>
                     <div className="col-12">
-                        <button type="submit" className="btn btn-primary">Complete Order</button>
+                        <button type="submit" onClick={handleOrderSubmit} className="btn btn-primary">Complete Order</button>
                     </div>
                 </form>
+                <ToastContainer />
             </div>
         </div>
     );
