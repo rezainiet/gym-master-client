@@ -11,6 +11,7 @@ import NotFound from './Shared/NotFound/NotFound';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import RequireAuth from './Pages/RequireAuth/RequireAuth';
 import auth from './firebase.init';
+import Blogs from './Pages/Blogs/Blogs';
 
 function App() {
   const [user, loading, error] = useAuthState(auth);
@@ -28,6 +29,7 @@ function App() {
         }></Route>
         <Route path='/login' element={<Login></Login>}></Route>
         <Route path='/register' element={<Registration></Registration>}></Route>
+        <Route path='/blogs' element={<Blogs></Blogs>}></Route>
         <Route path='*' element={<NotFound></NotFound>}></Route>
       </Routes>
       <Footer></Footer>

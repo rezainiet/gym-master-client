@@ -3,7 +3,7 @@ import './Footer.css'
 
 const Footer = () => {
     return (
-        <div className='footer-wrapper mt-1'>
+        <div id='footer' className='footer-wrapper mt-1'>
             <div>
                 <div>
                     <h4 className='text-success text-center custom-border'>Useful Links</h4>

@@ -1,3 +1,8 @@
+#footer {
+    position: relative;
+    bottom: 0;
+}
+
 .footer-wrapper {
     background-color: #24252A;
     display: flex;
