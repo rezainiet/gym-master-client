@@ -1,32 +1,37 @@
 import React, { useRef } from 'react';
 import { Button, Form } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
-import './Login.css';
 
-
-const Login = () => {
+const Registration = () => {
     const navigate = useNavigate();
+
     const emailRef = useRef('');
+    const nameRef = useRef('');
     const passwordRef = useRef('');
 
     const handleFormSubmit = event => {
         event.preventDefault();
 
         const email = emailRef.current.value;
+        const name = nameRef.current.value;
         const password = passwordRef.current.value;
 
-        console.log(email, password)
+        console.log(password, email, name);
     }
 
-    const navigateRegister = () => {
-        navigate('/register');
+    const navigateLogin = () => {
+        navigate('/login')
     }
     return (
         <div className='bg-dark'>
             <h1 className='text-center text-success form-container'>Please Login</h1>
             <div className='w-50 mx-auto'>
                 <div className='pb-5'>
-                    <Form onClick={handleFormSubmit} className='bg-light py-5 px-4 rounded'>
+                    <Form onSubmit={handleFormSubmit} className='bg-light py-5 px-4 rounded'>
+                        <Form.Group className="mb-3" controlId="formBasicPassword">
+                            <Form.Label>Name</Form.Label>
+                            <Form.Control ref={nameRef} required type="text" placeholder="Name" />
+                        </Form.Group>
                         <Form.Group className="mb-3" controlId="formBasicEmail">
                             <Form.Label>Email address</Form.Label>
                             <Form.Control ref={emailRef} required type="email" placeholder="Enter email" />
@@ -42,7 +47,7 @@ const Login = () => {
                         <Button variant="primary" type="submit">
                             Submit
                         </Button>
-                        <p className='mt-3'>Don't have any account? <span onClick={navigateRegister} className='text-info cursor-pointer'>Register Now</span ></p>
+                        <p className='mt-3'>Already have acount? <span onClick={navigateLogin} className='text-info cursor-pointer'>Login Now</span ></p>
                     </Form>
                 </div>
             </div>
@@ -50,4 +55,4 @@ const Login = () => {
     );
 };
 
-export default Login;
+export default Registration;
