@@ -1,11 +1,17 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef } from 'react';
 import { Button, Form } from 'react-bootstrap';
+import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { useNavigate } from 'react-router-dom';
-import SocialLogin from '../../Shared/SocialLogin/SocialLogin';
-import { getAuth, createUserWithEmailAndPassword, onAuthStateChanged } from "firebase/auth";
 import auth from '../../firebase.init';
+import SocialLogin from '../../Shared/SocialLogin/SocialLogin';
 
 const Registration = () => {
+    const [
+        createUserWithEmailAndPassword,
+        user,
+        loading,
+        error,
+    ] = useCreateUserWithEmailAndPassword(auth);
     const navigate = useNavigate();
 
     const emailRef = useRef('');
@@ -18,34 +24,16 @@ const Registration = () => {
         const email = emailRef.current.value;
         const name = nameRef.current.value;
         const password = passwordRef.current.value;
-
-        console.log(password, email, name);
-
-        createUserWithEmailAndPassword(auth, email, password)
-            .then((userCredential) => {
-                // Signed in 
-                const user = userCredential.user;
-                // ...
-            })
-            .catch((error) => {
-                const errorCode = error.code;
-                const errorMessage = error.message;
-                // ..
-            });
+        console.log(email, password, name);
+        createUserWithEmailAndPassword(email, password);
     }
 
+    if (user) {
+        navigate('/home')
+    }
     const navigateLogin = () => {
         navigate('/login')
     }
-
-    onAuthStateChanged(auth, (user) => {
-        if (user) {
-            navigate('/home')
-        } else {
-            // User is signed out
-            // ...
-        }
-    });
 
     return (
         <div className='bg-dark'>

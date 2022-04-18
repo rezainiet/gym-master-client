@@ -12,22 +12,22 @@ const Services = () => {
     console.log(services);
     return (
         <div>
-            <section class="section-services">
-                <div class="container">
-                    <div class="row justify-content-center text-center">
-                        <div class="col-md-10 col-lg-8">
-                            <div class="header-section">
-                                <h2 class="title">Exclusive <span>Services</span></h2>
-                                <p class="description">There are many variations of passages of Lorem Ipsum available but the majority have suffered alteration in some injected humour</p>
+            <section className="section-services">
+                <div className="container">
+                    <div className="row justify-content-center text-center">
+                        <div className="col-md-10 col-lg-8">
+                            <div className="header-section">
+                                <h2 className="title">Exclusive <span>Services</span></h2>
+                                <p className="description">There are many variations of passages of Lorem Ipsum available but the majority have suffered alteration in some injected humour</p>
                             </div>
                         </div>
                     </div>
-                    <div class="row">
+                    <div className="row">
 
 
 
                     </div>
-                    <div class="row gx-2">
+                    <div className="row gx-2">
                         {
                             services.map(service => <Service key={service.key} service={service}></Service>)
                         }

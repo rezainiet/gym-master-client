@@ -1,49 +1,42 @@
 import React, { useRef } from 'react';
 import { Button, Form } from 'react-bootstrap';
-import { useNavigate } from 'react-router-dom';
-import SocialLogin from '../../Shared/SocialLogin/SocialLogin';
-import { getAuth, onAuthStateChanged, signInWithEmailAndPassword } from "firebase/auth";
-import './Login.css';
+import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import { useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init';
+import SocialLogin from '../../Shared/SocialLogin/SocialLogin';
+import './Login.css';
 
 
 const Login = () => {
     const navigate = useNavigate();
     const emailRef = useRef('');
     const passwordRef = useRef('');
+    const location = useLocation();
 
-    const handleFormSubmit = event => {
+    let from = location.state?.from?.pathname || "/";
+
+    const [
+        signInWithEmailAndPassword,
+        user,
+        loading,
+        error,
+    ] = useSignInWithEmailAndPassword(auth);
+
+    if (user) {
+        navigate(from, { replace: true });
+    }
+
+    const handleSubmit = event => {
         event.preventDefault();
-
         const email = emailRef.current.value;
         const password = passwordRef.current.value;
 
-        console.log(email, password);
-
-        signInWithEmailAndPassword(auth, email, password)
-            .then((userCredential) => {
-                // Signed in 
-                const user = userCredential.user;
-                console.log(user)
-                // ...
-            })
-            .catch((error) => {
-                const errorCode = error.code;
-                const errorMessage = error.message;
-            });
+        signInWithEmailAndPassword(email, password);
     }
 
-    const navigateRegister = () => {
+    const navigateRegister = event => {
         navigate('/register');
     }
-    onAuthStateChanged(auth, (user) => {
-        if (user) {
-            navigate('/home')
-        } else {
-            // User is signed out
-            // ...
-        }
-    });
     return (
         <div className='bg-dark'>
             <h1 className='text-center text-success form-container'>Please Login</h1>
@@ -51,7 +44,7 @@ const Login = () => {
                 <div className='pb-5'>
                     <div className='bg-light py-5 px-4 rounded'>
 
-                        <Form onSubmit={handleFormSubmit}>
+                        <Form onSubmit={handleSubmit}>
                             <Form.Group className="mb-3" controlId="formBasicEmail">
                                 <Form.Label>Email address</Form.Label>
                                 <Form.Control ref={emailRef} required type="email" placeholder="Enter email" />
